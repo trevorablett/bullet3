@@ -424,7 +424,7 @@ bool CMainApplication::BInit()
 	m_nWindowHeight = 720;
 
 	/*
-	
+
 	//SDL_GL_SetAttribute( SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY );
 	SDL_GL_SetAttribute( SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE );
 	SDL_GL_SetAttribute( SDL_GL_MULTISAMPLEBUFFERS, 0 );
@@ -453,9 +453,9 @@ bool CMainApplication::BInit()
 
 #if 0
 	int cubeIndex = m_app->registerCubeShape(1,1,1);
-    
+
     b3Quaternion orn(0,0,0,1);
-    
+
 	{
 		b3Vector3 color=b3MakeVector3(0.3,0.3,0.6);
 		b3Vector3 pos = b3MakeVector3(0,0,0);
@@ -1356,8 +1356,8 @@ extern int gGraspingController;
 void CMainApplication::DrawControllers()
 {
 	// don't draw controllers if somebody else has input focus
-	if (m_pHMD->IsInputFocusCapturedByAnotherProcess())
-		return;
+	// if (m_pHMD->IsInputFocusCapturedByAnotherProcess())
+	// 	return;
 
 	std::vector<float> vertdataarray;
 
@@ -1827,19 +1827,19 @@ void CMainApplication::RenderScene(vr::Hmd_Eye nEye)
 		glBindVertexArray(0);
 	}
 
-	bool bIsInputCapturedByAnotherProcess = m_pHMD->IsInputFocusCapturedByAnotherProcess();
+	// bool bIsInputCapturedByAnotherProcess = m_pHMD->IsInputFocusCapturedByAnotherProcess();
 
 	if (gEnableVRRenderControllers)
 	{
-		if (!bIsInputCapturedByAnotherProcess)
-		{
+		// if (!bIsInputCapturedByAnotherProcess)
+		// {
 			// draw the controller axis lines
 			glUseProgram(m_unControllerTransformProgramID);
 			glUniformMatrix4fv(m_nControllerMatrixLocation, 1, GL_FALSE, GetCurrentViewProjectionMatrix(nEye).get());
 			glBindVertexArray(m_unControllerVAO);
 			glDrawArrays(GL_LINES, 0, m_uiControllerVertcount);
 			glBindVertexArray(0);
-		}
+		// }
 
 		// ----- Render Model rendering -----
 		glUseProgram(m_unRenderModelProgramID);
@@ -1853,8 +1853,8 @@ void CMainApplication::RenderScene(vr::Hmd_Eye nEye)
 			if (!pose.bPoseIsValid)
 				continue;
 
-			if (bIsInputCapturedByAnotherProcess && m_pHMD->GetTrackedDeviceClass(unTrackedDevice) == vr::TrackedDeviceClass_Controller)
-				continue;
+			// if (bIsInputCapturedByAnotherProcess && m_pHMD->GetTrackedDeviceClass(unTrackedDevice) == vr::TrackedDeviceClass_Controller)
+				// continue;
 
 			const Matrix4 &matDeviceToTracking = m_rmat4DevicePose[unTrackedDevice];
 			Matrix4 matMVP = GetCurrentViewProjectionMatrix(nEye) * matDeviceToTracking;

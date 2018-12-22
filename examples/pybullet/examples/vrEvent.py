@@ -16,7 +16,7 @@ ANALOG_AXIS=8
 c = p.connect(p.SHARED_MEMORY)
 print(c)
 if (c<0):
-		p.connect(p.GUI)
+		c = p.connect(p.GUI_SERVER)
 
 p.setInternalSimFlags(0)#don't load default robot assets etc
 p.resetSimulation()

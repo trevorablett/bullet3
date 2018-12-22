@@ -31,14 +31,13 @@ def euc_dist(posA, posB):
 		dist += (posA[i] - posB[i]) ** 2
 	return dist
 
-p.setRealTimeSimulation(1)
+# p.setRealTimeSimulation(1)
 
 controllers = [e[0] for e in p.getVREvents()]
 
 for j in range(p.getNumJoints(kuka_gripper)):
 	print(p.getJointInfo(kuka_gripper,j))
 while True:
-
 	events = p.getVREvents()
 	for e in (events):
 
@@ -52,35 +51,32 @@ while True:
 
 		# A simplistic version of gripper control
 		#@TO-DO: Add slider for the gripper
-		
-		
-		
+
+		print(e[ANALOG])
+
 		#for i in range(p.getNumJoints(kuka_gripper)):
 		i=4
 		p.setJointMotorControl2(kuka_gripper, i, p.POSITION_CONTROL, targetPosition=e[ANALOG]*0.05, force=10)
 		i=6
 		p.setJointMotorControl2(kuka_gripper, i, p.POSITION_CONTROL, targetPosition=e[ANALOG]*0.05, force=10)
 
-		
+
 		if sq_len < THRESHOLD * THRESHOLD:
 			eef_pos = e[POSITION]
 			eef_orn = p.getQuaternionFromEuler([0,-math.pi,0])
 			joint_pos = p.calculateInverseKinematics(kuka, 6, eef_pos, eef_orn,
-				lowerLimits=LOWER_LIMITS, upperLimits=UPPER_LIMITS, 
+				lowerLimits=LOWER_LIMITS, upperLimits=UPPER_LIMITS,
 				jointRanges=JOINT_RANGE, restPoses=REST_POSE, jointDamping=JOINT_DAMP)
 
-			
+
 			for i in range(len(joint_pos)):
-				p.setJointMotorControl2(kuka, i, p.POSITION_CONTROL, 
-					targetPosition=joint_pos[i], targetVelocity=0, positionGain=0.15, 
+				p.setJointMotorControl2(kuka, i, p.POSITION_CONTROL,
+					targetPosition=joint_pos[i], targetVelocity=0, positionGain=0.15,
 					velocityGain=1.0, force=MAX_FORCE)
-	
+
 
 		else:
 			# Set back to original rest pose
 			for jointIndex in range(p.getNumJoints(kuka)):
-				p.setJointMotorControl2(kuka, jointIndex, p.POSITION_CONTROL, 
+				p.setJointMotorControl2(kuka, jointIndex, p.POSITION_CONTROL,
 					REST_JOINT_POS[jointIndex], 0)
-
-
-
