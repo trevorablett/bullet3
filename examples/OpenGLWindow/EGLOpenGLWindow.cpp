@@ -84,19 +84,33 @@ void EGLOpenGLWindow::createWindow(const b3gWindowConstructionInfo& ci)
 
 	m_data->m_renderDevice = ci.m_renderDevice;
 
+	// EGLint egl_config_attribs[] = {EGL_RED_SIZE,
+	// 							   8,
+	// 							   EGL_GREEN_SIZE,
+	// 							   8,
+	// 							   EGL_BLUE_SIZE,
+	// 							   8,
+	// 							   EGL_DEPTH_SIZE,
+	// 							   8,
+	// 							   EGL_SURFACE_TYPE,
+	// 							   EGL_PBUFFER_BIT,
+	// 							   EGL_RENDERABLE_TYPE,
+	// 							   EGL_OPENGL_BIT,
+	// 							   EGL_NONE};
+
 	EGLint egl_config_attribs[] = {EGL_RED_SIZE,
-								   8,
-								   EGL_GREEN_SIZE,
-								   8,
-								   EGL_BLUE_SIZE,
-								   8,
-								   EGL_DEPTH_SIZE,
-								   8,
-								   EGL_SURFACE_TYPE,
-								   EGL_PBUFFER_BIT,
-								   EGL_RENDERABLE_TYPE,
-								   EGL_OPENGL_BIT,
-								   EGL_NONE};
+							   8,
+							   EGL_GREEN_SIZE,
+							   8,
+							   EGL_BLUE_SIZE,
+							   8,
+							   EGL_DEPTH_SIZE,
+							   24,
+							   EGL_SURFACE_TYPE,
+							   EGL_PBUFFER_BIT,
+							   EGL_RENDERABLE_TYPE,
+							   EGL_OPENGL_BIT,
+							   EGL_NONE};
 
 	EGLint egl_pbuffer_attribs[] = {
 		EGL_WIDTH,

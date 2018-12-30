@@ -61,6 +61,7 @@ GLint att[] = {GLX_RGBA,
               None
             };
 */
+
 static bool forceOpenGL3 = true;
 
 #ifdef DYNAMIC_LOAD_X11_FUNCTIONS

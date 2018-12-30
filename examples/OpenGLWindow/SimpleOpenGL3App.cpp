@@ -307,6 +307,9 @@ SimpleOpenGL3App::SimpleOpenGL3App(const char* title, int width, int height, boo
 {
 	gApp = this;
 
+	// windowType = 0;
+	printf("windowType tho: %d \n", windowType);
+
 	m_data = new SimpleInternalData;
 
 	if (windowType == 0)

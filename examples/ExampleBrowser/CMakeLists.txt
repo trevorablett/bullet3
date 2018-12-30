@@ -362,6 +362,19 @@ ADD_EXECUTABLE(App_ExampleBrowser
 		${BulletExampleBrowser_SRCS} 
 )
 
+ADD_EXECUTABLE(App_EGLExampleBrowser
+		main.cpp
+		ExampleEntries.cpp
+		ExampleEntries.h
+		${ExtendedTutorialsSources}
+		${BulletExampleBrowser_SRCS} 
+)
+
+ADD_CUSTOM_COMMAND(
+                TARGET App_EGLExampleBrowser
+                COMMAND ${CMAKE_COMMAND} ARGS window_backend=2
+        )
+
 FILE( MAKE_DIRECTORY "${PROJECT_BINARY_DIR}/data" )
 
 ADD_CUSTOM_COMMAND(
