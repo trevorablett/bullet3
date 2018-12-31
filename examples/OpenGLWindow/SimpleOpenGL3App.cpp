@@ -306,10 +306,6 @@ bool sOpenGLVerbose = true;
 SimpleOpenGL3App::SimpleOpenGL3App(const char* title, int width, int height, bool allowRetina, int windowType, int renderDevice, int maxNumObjectCapacity, int maxShapeCapacityInBytes)
 {
 	gApp = this;
-
-	// windowType = 0;
-	printf("windowType tho: %d \n", windowType);
-
 	m_data = new SimpleInternalData;
 
 	if (windowType == 0)
