@@ -138,7 +138,9 @@ struct EGLRendererVisualShapeConverterInternalData
 		  m_swHeight(START_HEIGHT),
 		  m_rgbColorBuffer(START_WIDTH, START_HEIGHT, TGAImage::RGB),
 		  m_lightDirection(btVector3(-5, 200, -40)),
+		  // m_lightDirection(btVector3(-50, 30, 40)),
 		  m_hasLightDirection(false),
+		  // m_hasLightDirection(true),
 		  m_lightColor(btVector3(1.0, 1.0, 1.0)),
 		  m_hasLightColor(false),
 		  m_lightDistance(2.0),
@@ -1045,6 +1047,9 @@ void EGLRendererVisualShapeConverter::copyCameraImageDataGL(
 			{
 				m_data->m_instancingRenderer->setLightPosition(m_data->m_lightDirection);
 			}
+
+			// printf("Data??? %f \n", m_data->m_lightDirection.getX());
+
 			m_data->m_instancingRenderer->setActiveCamera(&m_data->m_camera);
 			m_data->m_instancingRenderer->updateCamera(m_data->m_upAxis);
 

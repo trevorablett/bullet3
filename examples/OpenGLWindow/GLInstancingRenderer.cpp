@@ -1570,7 +1570,10 @@ void GLInstancingRenderer::renderScene()
 	}
 	else
 	{
-		if (useShadowMap)
+		// Removed shadow rendering to allow easy matching of EGL with VR and regular
+		// OpenGL in pybullet
+		// if (useShadowMap)
+		if (false)
 		{
 			renderSceneInternal(B3_CREATE_SHADOWMAP_RENDERMODE);
 
