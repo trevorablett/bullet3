@@ -1,3 +1,4 @@
+#include "stdio.h"
 #include "PhysicsClientSharedMemory.h"
 #include "PosixSharedMemory.h"
 #include "Win32SharedMemory.h"
@@ -978,7 +979,10 @@ const SharedMemoryStatus* PhysicsClientSharedMemory::processServerStatus()
 
 				unsigned char* rgbaPixelsReceived =
 					(unsigned char*)&m_data->m_testBlock1->m_bulletStreamDataServerToClientRefactor[0];
-				//  printf("pixel = %d\n", rgbaPixelsReceived[0]);
+				
+				// TODO Trevor Ablett, this is the spot where the data is not coming through correctly
+
+				// printf("pixel = %d\n", rgbaPixelsReceived[0]);
 
 				float* depthBuffer = (float*)&(m_data->m_testBlock1->m_bulletStreamDataServerToClientRefactor[serverCmd.m_sendPixelDataArguments.m_numPixelsCopied * 4]);
 				int* segmentationMaskBuffer = (int*)&(m_data->m_testBlock1->m_bulletStreamDataServerToClientRefactor[serverCmd.m_sendPixelDataArguments.m_numPixelsCopied * 8]);

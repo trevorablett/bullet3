@@ -3546,6 +3546,9 @@ bool PhysicsServerCommandProcessor::processRequestCameraImageCommand(const struc
 		unsigned char* pixelRGBA = (unsigned char*)bufferServerToClient;
 		int numRequestedPixels = btMin(maxNumPixels, numRemainingPixels);
 
+		//Trevor test
+		//printf("pixel 0: %d \n", pixelRGBA[0]);
+
 		float* depthBuffer = (float*)(bufferServerToClient + numRequestedPixels * 4);
 		int* segmentationMaskBuffer = (int*)(bufferServerToClient + numRequestedPixels * 8);
 

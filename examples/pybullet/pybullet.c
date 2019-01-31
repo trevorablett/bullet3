@@ -1,3 +1,5 @@
+#include "stdio.h"  // for printf
+
 #include "../SharedMemory/PhysicsClientC_API.h"
 #include "../SharedMemory/PhysicsDirectC_API.h"
 #include "../SharedMemory/SharedMemoryInProcessPhysicsC_API.h"
@@ -8041,6 +8043,7 @@ static PyObject* pybullet_getCameraImage(PyObject* self, PyObject* args, PyObjec
 			PyTuple_SetItem(pyResultList, 2, pylistRGB);
 			PyTuple_SetItem(pyResultList, 3, pylistDep);
 			PyTuple_SetItem(pyResultList, 4, pylistSeg);
+
 			return pyResultList;
 #endif  //PYBULLET_USE_NUMPY
 
